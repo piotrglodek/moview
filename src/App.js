@@ -1,7 +1,8 @@
 import React from 'react';
+import { Providers } from './Providers';
 
 function App() {
-  return <div>moview</div>;
+  return <Providers>Moview</Providers>;
 }
 
 export default App;
