@@ -8,6 +8,11 @@ export const theme = {
     darkGray: '#1b1c22',
     black: '#08090b',
   },
+  weight: {
+    regular: '400',
+    medium: '500',
+    bold: '700',
+  },
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -19,5 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
         font-size: 1.6rem;
+        margin:0;
+        font-family: 'Poppins', sans-serif;
     }
 `;
