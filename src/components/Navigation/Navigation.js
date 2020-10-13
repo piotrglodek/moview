@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 // components
-import { Logo, Menu, Search } from './';
+import { Nav, Search } from './';
 
 export const Navigation = () => {
+  // show search bar
+  const [isVisible, setVisible] = useState(false);
+  const handleOpen = () => setVisible(true);
+  const handleClose = () => setVisible(false);
+
   return (
     <StyledNav>
       <StyledContainer>
-        <Logo />
-        <Menu />
-        <Search />
+        {isVisible ? (
+          <Search handleClose={handleClose} />
+        ) : (
+          <Nav handleOpen={handleOpen} />
+        )}
       </StyledContainer>
     </StyledNav>
   );
@@ -17,13 +24,10 @@ export const Navigation = () => {
 
 const StyledNav = styled.nav`
   padding: 2.5rem 0;
-  background-color: ${({ theme: { color } }) => color.gray};
+  background-color: ${({ theme: { color } }) => color.nav};
 `;
 
 const StyledContainer = styled.header`
   width: 90%;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
