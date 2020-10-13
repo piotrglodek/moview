@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -13,3 +14,7 @@ const StyledLogo = styled(Link)`
   display: block;
   text-decoration: none;
 `;
+
+StyledLogo.propTypes = {
+  to: PropTypes.string.isRequired,
+};

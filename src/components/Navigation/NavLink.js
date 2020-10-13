@@ -16,7 +16,6 @@ export const NavLink = ({ label, to, activeWhenExact }) => {
   );
 };
 
-const bgColor = `rgba(255, 255, 255, 0.05)`;
 const StyledLink = styled(Link)`
   color: ${({ theme: { color } }) => color.primary};
   font-weight: ${({ theme: { weight } }) => weight.medium};
@@ -24,11 +23,12 @@ const StyledLink = styled(Link)`
   font-size: 1.6rem;
   padding: 0.5rem 2rem;
   border-radius: 0.2rem;
-  background-color: ${({ $isActive }) => ($isActive ? bgColor : 'transparent')};
+  background-color: ${({ $isActive, theme: { color } }) =>
+    $isActive ? color.gray : 'transparent'};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${bgColor};
+    background-color: ${({ theme: { color } }) => color.gray};
   }
 `;
 
