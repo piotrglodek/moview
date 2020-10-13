@@ -2,11 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   color: {
-    primary: '#3e51fb',
     white: '#ffffff',
-    gray: '#23242b',
-    darkGray: '#1b1c22',
-    black: '#08090b',
+    primary: '#3e51fb',
+    gray: 'rgba(255, 255, 255, 0.05)',
+    nav: '#23242b',
+    main: '#1b1c22',
+    filter: '#08090b',
   },
   weight: {
     regular: '400',
