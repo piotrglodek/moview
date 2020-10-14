@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 // components
-import { Nav, Search } from './';
+import { Nav, Search, Container } from '../';
 
 export const Navigation = () => {
   // show search bar
@@ -11,23 +11,18 @@ export const Navigation = () => {
 
   return (
     <StyledNav>
-      <StyledContainer>
+      <Container>
         {isVisible ? (
           <Search handleClose={handleClose} />
         ) : (
           <Nav handleOpen={handleOpen} />
         )}
-      </StyledContainer>
+      </Container>
     </StyledNav>
   );
 };
 
 const StyledNav = styled.nav`
-  padding: 2.5rem 0;
+  padding: 1.6rem 0;
   background-color: ${({ theme: { color } }) => color.nav};
-`;
-
-const StyledContainer = styled.header`
-  width: 90%;
-  margin: 0 auto;
 `;
