@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import {
-  MovieCardList,
-  SerieCardList,
-  Container,
-  Section,
-  SectionTitle,
-} from '../components/';
+import { CardList, Container, Section, SectionTitle } from '../components/';
 // api
 import { fetchTypes } from '../api';
 // scroll bar
@@ -18,24 +12,13 @@ export const Home = () => {
   return (
     <StyledMain>
       <Container>
-        {fetchTypes.movies.map((movie, i) => {
-          const { title } = movie;
+        {fetchTypes.map((type, i) => {
+          const { title } = type;
           return (
             <Section key={i}>
               <SectionTitle>{title}</SectionTitle>
               <SimpleBar>
-                <MovieCardList fetch={movie} />
-              </SimpleBar>
-            </Section>
-          );
-        })}
-        {fetchTypes.tv.map((serie, i) => {
-          const { title } = serie;
-          return (
-            <Section key={i}>
-              <SectionTitle>{title}</SectionTitle>
-              <SimpleBar>
-                <SerieCardList fetch={serie} />
+                <CardList type={type} />
               </SimpleBar>
             </Section>
           );

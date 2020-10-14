@@ -10,13 +10,10 @@ export { Search } from './Navigation/Search';
 export { Container } from './Layout/Container';
 export { Section } from './Layout/Section';
 export { SectionTitle } from './Layout/SectionTitle';
-export { withGap } from './Layout/withGap';
-export { CardListSkeleton } from './Layout/CardListSkeleton';
-// Movie
-export { MovieCard } from './Movie/MovieCard';
-export { MovieCardList } from './Movie/MovieCardList';
-// Serie
-export { SerieCard } from './Serie/SerieCard';
-export { SerieCardList } from './Serie/SerieCardList';
+// Card
+export { CardListSkeleton } from './Card/CardListSkeleton';
+export { CardList } from './Card/CardList';
+export { CardItem } from './Card/CardItem';
+export { Card } from './Card/Card';
 // Footer
 export { Footer } from './Footer/Footer';
