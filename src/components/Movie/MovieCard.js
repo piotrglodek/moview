@@ -3,13 +3,22 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 // api
-import { base_poster_url } from '../../api';
+import { useQuery } from 'react-query';
+import { base_poster_url, fetchMovieGenres } from '../../api';
 
 export const MovieCard = ({ data }) => {
-  const { id, poster_path, title, release_date, vote_average } = data;
-  console.log(data);
+  const {
+    id,
+    poster_path,
+    title,
+    release_date,
+    vote_average,
+    genre_ids,
+  } = data;
   let poster_url = `${base_poster_url}${poster_path}`;
   let releaseYear = parseInt(release_date);
+  const genres = useQuery(['Fetch genres', genre_ids], fetchMovieGenres);
+
   return (
     <StyledCard to={`/movie/${id}`}>
       <StyledCardImage src={poster_url} alt={`${title} poster image`} />
@@ -17,8 +26,10 @@ export const MovieCard = ({ data }) => {
         <StyledCardTitle>{title}</StyledCardTitle>
         <StyledCardSubTitle>{releaseYear}</StyledCardSubTitle>
         <StyledCardCategories>
-          <StyledCardCategory>Category</StyledCardCategory>
-          <StyledCardCategory>Category 2</StyledCardCategory>
+          {!genres.isLoading &&
+            genres.data.map(genre => (
+              <StyledCardCategory key={genre}>{genre}</StyledCardCategory>
+            ))}
         </StyledCardCategories>
         <StyledCardRating>{vote_average}</StyledCardRating>
       </StyledCardOverlay>
