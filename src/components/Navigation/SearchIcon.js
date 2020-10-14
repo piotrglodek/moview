@@ -6,7 +6,7 @@ import { ReactComponent as SearchSvg } from '../../assets/search-icon.svg';
 
 export const SearchIcon = ({ handleOpen }) => {
   return (
-    <StyledButton onClick={handleOpen}>
+    <StyledButton aria-label='show search bar' onClick={handleOpen}>
       <StyledSearchIcon />
     </StyledButton>
   );
