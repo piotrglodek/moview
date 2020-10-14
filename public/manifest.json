@@ -1,0 +1,9 @@
+{
+  "short_name": "Moview",
+  "name": "Movie and Series- moview",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1b1c22",
+  "background_color": "#1b1c22"
+}
