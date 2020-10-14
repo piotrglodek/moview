@@ -29,4 +29,7 @@ export const GlobalStyles = createGlobalStyle`
         margin:0;
         font-family: 'Poppins', sans-serif;
     }
+    .simplebar-scrollbar:before{
+      background-color:${theme.color.primary};
+    }
 `;

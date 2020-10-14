@@ -32,8 +32,6 @@ export const MovieCardList = ({ fetch }) => {
 
 const StyledWrapper = styled.article`
   padding-bottom: 2rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
   display: flex;
 `;
 
