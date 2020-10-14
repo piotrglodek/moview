@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 // api
-import { base_poster_url } from '../../api';
+import { base_poster_url, fetchSerieGenres } from '../../api';
+import { useQuery } from 'react-query';
 
 export const SerieCard = ({ data }) => {
   const {
@@ -16,6 +17,7 @@ export const SerieCard = ({ data }) => {
   } = data;
   let poster_url = `${base_poster_url}${poster_path}`;
   let releaseYear = parseInt(first_air_date);
+  const genres = useQuery(['Fetch genres', genre_ids], fetchSerieGenres);
   return (
     <StyledCard to={`/serie/${id}`}>
       <StyledCardImage src={poster_url} alt={`${name} poster image`} />
@@ -23,8 +25,10 @@ export const SerieCard = ({ data }) => {
         <StyledCardTitle>{name}</StyledCardTitle>
         <StyledCardSubTitle>{releaseYear}</StyledCardSubTitle>
         <StyledCardCategories>
-          <StyledCardCategory>Category</StyledCardCategory>
-          <StyledCardCategory>Category 2</StyledCardCategory>
+          {!genres.isLoading &&
+            genres.data.map(genre => (
+              <StyledCardCategory key={genre}>{genre}</StyledCardCategory>
+            ))}
         </StyledCardCategories>
         <StyledCardRating>{vote_average}</StyledCardRating>
       </StyledCardOverlay>
@@ -104,7 +108,7 @@ const StyledCardCategory = styled.p`
 `;
 const StyledCardRating = styled.p`
   ${shared}
-  color:${({ theme: { color } }) => color.secondary};
+  color:${({ theme: { color } }) => color.primary};
 `;
 
 SerieCard.propTypes = {
