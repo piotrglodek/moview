@@ -15,3 +15,6 @@ export { CardListSkeleton } from './Layout/CardListSkeleton';
 // Movie
 export { MovieCard } from './Movie/MovieCard';
 export { MovieCardList } from './Movie/MovieCardList';
+// Serie
+export { SerieCard } from './Serie/SerieCard';
+export { SerieCardList } from './Serie/SerieCardList';
