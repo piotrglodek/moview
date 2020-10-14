@@ -10,6 +10,9 @@ import {
 } from '../components/';
 // api
 import { fetchTypes } from '../api';
+// scroll bar
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 export const Home = () => {
   return (
@@ -20,7 +23,9 @@ export const Home = () => {
           return (
             <Section key={i}>
               <SectionTitle>{title}</SectionTitle>
-              <MovieCardList fetch={movie} />
+              <SimpleBar>
+                <MovieCardList fetch={movie} />
+              </SimpleBar>
             </Section>
           );
         })}
@@ -29,7 +34,9 @@ export const Home = () => {
           return (
             <Section key={i}>
               <SectionTitle>{title}</SectionTitle>
-              <SerieCardList fetch={serie} />
+              <SimpleBar>
+                <SerieCardList fetch={serie} />
+              </SimpleBar>
             </Section>
           );
         })}
