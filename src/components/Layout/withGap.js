@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const withGap = WrappedComponent => () => {
+export const withGap = WrappedComponent => props => {
   return (
     <StyledCardItem>
-      <WrappedComponent />
+      <WrappedComponent {...props} />
     </StyledCardItem>
   );
 };

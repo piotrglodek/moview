@@ -2,49 +2,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+// api
+import { base_poster_url } from '../../api';
 
-export const Card = () => {
+export const MovieCard = ({ data }) => {
+  const { id, poster_path, title, release_date, vote_average } = data;
+  console.log(data);
+  let poster_url = `${base_poster_url}${poster_path}`;
+  let releaseYear = parseInt(release_date);
   return (
-    <StyledCard to='/'>
-      <StyledCardImage url={''} />
+    <StyledCard to={`/movie/${id}`}>
+      <StyledCardImage src={poster_url} alt={`${title} poster image`} />
       <StyledCardOverlay>
-        <StyledCardTitle>Title</StyledCardTitle>
-        <StyledCardSubTitle>SubTitle</StyledCardSubTitle>
+        <StyledCardTitle>{title}</StyledCardTitle>
+        <StyledCardSubTitle>{releaseYear}</StyledCardSubTitle>
         <StyledCardCategories>
           <StyledCardCategory>Category</StyledCardCategory>
           <StyledCardCategory>Category 2</StyledCardCategory>
         </StyledCardCategories>
-        <StyledCardRating>Number</StyledCardRating>
+        <StyledCardRating>{vote_average}</StyledCardRating>
       </StyledCardOverlay>
     </StyledCard>
   );
 };
 
 const StyledCard = styled(Link)`
-  width: 14.8rem;
-  border: 2px solid transparent;
-  border-radius: 0.5rem;
-  height: 17.5rem;
   position: relative;
   text-decoration: none;
   display: block;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
   transition: border 0.4s ease;
-  scroll-snap-align: center;
+  height: 23.1rem;
   &:hover {
     border-color: ${({ theme: { color } }) => color.primary};
   }
 `;
 
-const StyledCardImage = styled.div`
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(${({ url }) => url});
+const StyledCardImage = styled.img`
+  display: block;
+  border-radius: 0.5rem;
+  height: 100%;
 `;
 
 const StyledCardOverlay = styled.div`
@@ -56,7 +54,7 @@ const StyledCardOverlay = styled.div`
   background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.65) 45%,
+    rgba(0, 0, 0, 0.7) 100%,
     rgba(255, 255, 255, 0) 100%
   );
   opacity: 0;
@@ -75,16 +73,16 @@ const StyledCardOverlay = styled.div`
 
 const shared = css`
   color: ${({ theme: { color } }) => color.white};
-  font-weight: ${({ theme: { weight } }) => weight.regular};
+  font-weight: ${({ theme: { weight } }) => weight.medium};
   margin: 0;
   margin-bottom: 0.2rem;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 `;
 
 const StyledCardTitle = styled.h2`
   ${shared};
-  font-size: 1.5rem;
-  font-weight: ${({ theme: { weight } }) => weight.medium};
+  font-size: 1.4rem;
+  font-weight: ${({ theme: { weight } }) => weight.bold};
   margin-bottom: 0.5rem;
 `;
 const StyledCardSubTitle = styled.p`
@@ -101,6 +99,10 @@ const StyledCardCategory = styled.p`
 const StyledCardRating = styled.p`
   ${shared}
 `;
+
+MovieCard.propTypes = {
+  data: PropTypes.object,
+};
 
 StyledCard.defaultProps = {
   to: '/',
