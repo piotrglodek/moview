@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { Logo, Menu, SearchIcon } from './';
+import { Logo, Menu, SearchIcon } from '../';
 
 export const Nav = ({ handleOpen }) => {
   return (
