@@ -44,7 +44,9 @@ const StyledCard = styled(Link)`
   border: 2px solid transparent;
   border-radius: 0.5rem;
   transition: border 0.4s ease;
+  width: 15.4rem;
   height: 23.1rem;
+
   &:hover {
     border-color: ${({ theme: { color } }) => color.primary};
   }
@@ -53,7 +55,8 @@ const StyledCard = styled(Link)`
 const StyledCardImage = styled.img`
   display: block;
   border-radius: 0.5rem;
-  height: 100%;
+  width: 15.4rem;
+  height: 23.1rem;
 `;
 
 const StyledCardOverlay = styled.div`

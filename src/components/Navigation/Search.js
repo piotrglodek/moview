@@ -17,7 +17,7 @@ export const Search = ({ handleClose }) => {
 
   return (
     <StyledHeader>
-      <StyledButton onClick={handleClose}>
+      <StyledButton aria-label='go gack' onClick={handleClose}>
         <StyledArrowLeft />
       </StyledButton>
       <StyledInput
