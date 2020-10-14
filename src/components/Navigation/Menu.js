@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import { NavLink } from './';
+import { NavLink } from '../';
 
 const links = [
   { label: 'Homepage', to: '/' },

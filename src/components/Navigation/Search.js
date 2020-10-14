@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // icon
 import { ReactComponent as ArrowBackSvg } from '../../assets/arrow-back.svg';
+// components
+import { Container } from '../';
 
 export const Search = ({ handleClose }) => {
   //input
@@ -26,7 +28,7 @@ export const Search = ({ handleClose }) => {
         autoFocus
       />
       <StyledDrawerRoot>
-        <StyledContainer>search results for {value}:</StyledContainer>
+        <Container>search results for {value}:</Container>
         <StyledDrawer onClick={handleClose} title='close' />
       </StyledDrawerRoot>
     </StyledHeader>
@@ -81,7 +83,7 @@ const StyledInput = styled.input`
 
 const StyledDrawerRoot = styled.div`
   position: fixed;
-  top: 8.6rem;
+  top: 6.8rem;
   left: 0;
   right: 0;
   bottom: 0;
@@ -92,15 +94,10 @@ const StyledDrawerRoot = styled.div`
 const StyledDrawer = styled.div`
   z-index: -1;
   position: fixed;
-  top: 8.6rem;
+  top: 6.8rem;
   left: 0;
   right: 0;
   bottom: 0;
-`;
-
-const StyledContainer = styled.div`
-  width: 90%;
-  margin: 0 auto;
 `;
 
 Search.propTypes = {
