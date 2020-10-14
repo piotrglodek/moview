@@ -98,6 +98,7 @@ const StyledCardCategory = styled.p`
 `;
 const StyledCardRating = styled.p`
   ${shared}
+  color:${({ theme: { color } }) => color.secondary};
 `;
 
 MovieCard.propTypes = {
