@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // components
 import {
   MovieCardList,
+  SerieCardList,
   Container,
   Section,
   SectionTitle,
@@ -20,6 +21,15 @@ export const Home = () => {
             <Section key={i}>
               <SectionTitle>{title}</SectionTitle>
               <MovieCardList fetch={movie} />
+            </Section>
+          );
+        })}
+        {fetchTypes.tv.map((serie, i) => {
+          const { title } = serie;
+          return (
+            <Section key={i}>
+              <SectionTitle>{title}</SectionTitle>
+              <SerieCardList fetch={serie} />
             </Section>
           );
         })}
