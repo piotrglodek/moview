@@ -2,7 +2,7 @@ import React from 'react';
 import { Providers } from './Providers';
 import { Switch, Route } from 'react-router-dom';
 // components
-import { Navigation } from './components';
+import { Navigation, Footer } from './components';
 // pages
 import { Home } from './pages';
 // temp React query dev tools
@@ -15,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
       </Switch>
+      <Footer />
       <ReactQueryDevtools />
     </Providers>
   );
