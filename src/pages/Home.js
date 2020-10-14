@@ -1,24 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import { Container, Section, SectionTitle } from '../components/';
+import {
+  MovieCardList,
+  Container,
+  Section,
+  SectionTitle,
+} from '../components/';
+// api
+import { fetchTypes } from '../api';
 
 export const Home = () => {
   return (
     <StyledMain>
       <Container>
-        <Section>
-          <SectionTitle>Most popular movies</SectionTitle>
-        </Section>
-        <Section>
-          <SectionTitle>Top rated movies</SectionTitle>
-        </Section>
-        <Section>
-          <SectionTitle>Most popular series</SectionTitle>
-        </Section>
-        <Section>
-          <SectionTitle>Top rated series</SectionTitle>
-        </Section>
+        {fetchTypes.movies.map((movie, i) => {
+          const { title } = movie;
+          return (
+            <Section key={i}>
+              <SectionTitle>{title}</SectionTitle>
+              <MovieCardList fetch={movie} />
+            </Section>
+          );
+        })}
       </Container>
     </StyledMain>
   );
