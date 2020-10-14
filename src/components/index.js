@@ -18,3 +18,5 @@ export { MovieCardList } from './Movie/MovieCardList';
 // Serie
 export { SerieCard } from './Serie/SerieCard';
 export { SerieCardList } from './Serie/SerieCardList';
+// Footer
+export { Footer } from './Footer/Footer';
