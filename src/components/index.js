@@ -16,5 +16,6 @@ export { CardListSkeleton } from './Card/CardListSkeleton';
 export { CardList } from './Card/CardList';
 export { CardItem } from './Card/CardItem';
 export { Card } from './Card/Card';
+export { CardImage } from './Card/CardImage';
 // Footer
 export { Footer } from './Footer/Footer';
