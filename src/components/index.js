@@ -6,6 +6,7 @@ export { Menu } from './Navigation/Menu';
 export { NavLink } from './Navigation/NavLink';
 export { SearchIcon } from './Navigation/SearchIcon';
 export { Search } from './Navigation/Search';
+export { Hamburger } from './Navigation/Hamburger';
 // Layout
 export { Container } from './Layout/Container';
 export { Section } from './Layout/Section';

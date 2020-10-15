@@ -1,36 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // icon
 import { ReactComponent as ArrowBackSvg } from '../../assets/arrow-back.svg';
 // components
-import { Container } from '../';
+import { Card } from '../';
+// api
+import { useQuery } from 'react-query';
+import { searchAll } from '../../api';
 
-export const Search = ({ handleClose }) => {
+export const Search = ({ closeSearchBar }) => {
   //input
-  const [value, setValue] = useState('');
-
-  const handleSearch = e => {
-    setValue(e.target.value.toLowerCase());
-    console.log('query: ', value);
+  const [query, setQuery] = useState('');
+  const handleQuery = e => {
+    setQuery(e.target.value);
   };
+
+  // search movies
+  const { isIdle, isLoading, isFetching, isError, data, refetch } = useQuery(
+    ['search', query],
+    searchAll,
+    {
+      enabled: false,
+    }
+  );
+
+  useEffect(() => {
+    const handleRefetch = () => {
+      if (query !== '') refetch();
+    };
+    handleRefetch();
+  }, [query, refetch]);
 
   return (
     <StyledHeader>
-      <StyledButton aria-label='go gack' onClick={handleClose}>
+      <StyledButton aria-label='go gack' onClick={closeSearchBar}>
         <StyledArrowLeft />
       </StyledButton>
       <StyledInput
-        onChange={handleSearch}
-        value={value}
-        placeholder='search movie or serie'
+        onChange={handleQuery}
+        value={query}
+        placeholder='Search movie or serie'
         type='text'
         autoFocus
       />
-      <StyledDrawerRoot>
-        <Container>search results for {value}:</Container>
-        <StyledDrawer onClick={handleClose} title='close' />
-      </StyledDrawerRoot>
+      <StyledOverlay>
+        {isIdle ? (
+          <StyledText>Search for results</StyledText>
+        ) : isError ? (
+          <StyledText>Error</StyledText>
+        ) : isLoading || isFetching ? (
+          <StyledText>searching...</StyledText>
+        ) : (
+          <StyledRow>
+            {data.map(result => {
+              return (
+                <StyledSearchItem key={result.id}>
+                  <Card
+                    data={result}
+                    to={result.media_type}
+                    title={
+                      result.media_type === 'movie' ? result.title : result.name
+                    }
+                    year={
+                      result.media_type === 'movie'
+                        ? result.release_date
+                        : result.first_air_date
+                    }
+                  />
+                </StyledSearchItem>
+              );
+            })}
+          </StyledRow>
+        )}
+      </StyledOverlay>
     </StyledHeader>
   );
 };
@@ -81,25 +124,34 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledDrawerRoot = styled.div`
+const StyledOverlay = styled.div`
   position: fixed;
   top: 6.8rem;
   left: 0;
-  right: 0;
   bottom: 0;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
-const StyledDrawer = styled.div`
-  z-index: -1;
-  position: fixed;
-  top: 6.8rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
+const StyledRow = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+`;
+
+const StyledText = styled.p`
+  font-size: 1.6rem;
+  color: ${({ theme: { color } }) => color.white};
+  text-align: center;
+`;
+
+const StyledSearchItem = styled.div`
+  margin: 1rem;
 `;
 
 Search.propTypes = {
-  handleClose: PropTypes.func,
+  closeSearchBar: PropTypes.func.isRequired,
 };

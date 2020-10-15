@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 // components
 import { Nav, Search, Container } from '../';
+// hook
+import { useToggleSearchBar } from '../../hooks/useToggleSearchBar';
 
 export const Navigation = () => {
   // show search bar
-  const [isVisible, setVisible] = useState(false);
-  const handleOpen = () => setVisible(true);
-  const handleClose = () => setVisible(false);
+  const [isVisible, openSearchBar, closeSearchBar] = useToggleSearchBar();
 
   return (
     <StyledNav>
       <Container>
         {isVisible ? (
-          <Search handleClose={handleClose} />
+          <Search closeSearchBar={closeSearchBar} />
         ) : (
-          <Nav handleOpen={handleOpen} />
+          <Nav openSearchBar={openSearchBar} />
         )}
       </Container>
     </StyledNav>
