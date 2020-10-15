@@ -9,7 +9,7 @@ import { Card } from '../';
 import { useQuery } from 'react-query';
 import { searchAll } from '../../api';
 
-export const Search = ({ handleClose }) => {
+export const Search = ({ closeSearchBar }) => {
   //input
   const [query, setQuery] = useState('');
   const handleQuery = e => {
@@ -34,7 +34,7 @@ export const Search = ({ handleClose }) => {
 
   return (
     <StyledHeader>
-      <StyledButton aria-label='go gack' onClick={handleClose}>
+      <StyledButton aria-label='go gack' onClick={closeSearchBar}>
         <StyledArrowLeft />
       </StyledButton>
       <StyledInput
@@ -153,5 +153,5 @@ const StyledSearchItem = styled.div`
 `;
 
 Search.propTypes = {
-  handleClose: PropTypes.func,
+  closeSearchBar: PropTypes.func.isRequired,
 };

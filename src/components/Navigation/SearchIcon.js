@@ -4,9 +4,9 @@ import styled from 'styled-components';
 // icon
 import { ReactComponent as SearchSvg } from '../../assets/search-icon.svg';
 
-export const SearchIcon = ({ handleOpen }) => {
+export const SearchIcon = ({ openSearchBar }) => {
   return (
-    <StyledButton aria-label='show search bar' onClick={handleOpen}>
+    <StyledButton aria-label='show search bar' onClick={openSearchBar}>
       <StyledSearchIcon />
     </StyledButton>
   );
@@ -35,5 +35,5 @@ const StyledSearchIcon = styled(SearchSvg)`
 `;
 
 SearchIcon.propTypes = {
-  handleOpen: PropTypes.func,
+  openSearchBar: PropTypes.func.isRequired,
 };
