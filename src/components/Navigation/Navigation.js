@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 // components
 import { Nav, Search, Container } from '../';
@@ -8,6 +8,15 @@ export const Navigation = () => {
   const [isVisible, setVisible] = useState(false);
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
+
+  useEffect(() => {
+    const handleBodyScroll = () => {
+      isVisible
+        ? (document.body.style.overflow = 'hidden')
+        : (document.body.style.overflow = 'auto');
+    };
+    handleBodyScroll();
+  }, [isVisible]);
 
   return (
     <StyledNav>

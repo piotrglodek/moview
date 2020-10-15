@@ -17,18 +17,18 @@ export const theme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-    *,*::after,*::before{
-        box-sizing:border-box;
-    }
-    html {
-        font-size: 62.5%;
-    }
-    body {
-        font-size: 1.6rem;
-        margin:0;
-        font-family: 'Poppins', sans-serif;
-    }
-    .simplebar-scrollbar:before{
-      background-color:${theme.color.primary};
-    }
+  *,*::after,*::before{
+      box-sizing:border-box;
+  }
+  html {
+      font-size: 62.5%;
+  }
+  body {
+      font-size: 1.6rem;
+      margin:0;
+      font-family: 'Poppins', sans-serif;
+  }
+  .simplebar-scrollbar:before{
+    background-color:${theme.color.primary};
+  }
 `;
