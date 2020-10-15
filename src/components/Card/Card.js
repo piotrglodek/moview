@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 // api
 import { useQuery } from 'react-query';
 import { base_poster_url, fetchGenres } from '../../api';
+// components
+import { CardImage } from '../';
 
 export const Card = ({ data, to, title, year }) => {
   const { id, poster_path, vote_average, genre_ids } = data;
@@ -14,7 +16,7 @@ export const Card = ({ data, to, title, year }) => {
 
   return (
     <StyledCard to={`/${to}/${id}`}>
-      <StyledImage src={poster_url} alt={`${title} image`} />
+      <CardImage src={poster_url} alt={`${title} image`} />
       <StyledOverlay>
         <StyledTitle>{title}</StyledTitle>
         <StyledSubtitle>{releaseYear}</StyledSubtitle>
@@ -43,13 +45,6 @@ const StyledCard = styled(Link)`
   &:hover {
     border-color: ${({ theme: { color } }) => color.primary};
   }
-`;
-
-const StyledImage = styled.img`
-  display: block;
-  border-radius: 0.5rem;
-  width: 15.4rem;
-  height: 23.1rem;
 `;
 
 const StyledOverlay = styled.div`
