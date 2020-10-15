@@ -2,14 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { Logo, Menu, SearchIcon } from '../';
+import { Logo, Menu, SearchIcon, Hamburger } from '../';
+// hook
+import { useToggleMenu } from '../../hooks/useToggleMenu';
 
-export const Nav = ({ handleOpen }) => {
+export const Nav = ({ openSearchBar }) => {
+  const [isOpen, toggleMenu] = useToggleMenu();
+
   return (
     <StyledContainer>
       <Logo />
-      <Menu />
-      <SearchIcon handleOpen={handleOpen} />
+      <Menu isOpen={isOpen} />
+      <SearchIcon openSearchBar={openSearchBar} />
+      <Hamburger toggleMenu={toggleMenu} isOpen={isOpen} />
     </StyledContainer>
   );
 };
@@ -21,5 +26,5 @@ const StyledContainer = styled.div`
 `;
 
 Nav.propTypes = {
-  handleOpen: PropTypes.func,
+  openSearchBar: PropTypes.func.isRequired,
 };
