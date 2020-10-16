@@ -17,7 +17,7 @@ export const Search = ({ closeSearchBar }) => {
   };
 
   // search movies
-  const { isIdle, isLoading, isFetching, isError, data, refetch } = useQuery(
+  const { isIdle, isLoading, isError, data, refetch } = useQuery(
     ['search', query],
     search,
     {
@@ -50,7 +50,7 @@ export const Search = ({ closeSearchBar }) => {
             <StyledText>Search for results</StyledText>
           ) : isError ? (
             <StyledText>Error</StyledText>
-          ) : isLoading || isFetching ? (
+          ) : isLoading ? (
             <StyledText>Searching...</StyledText>
           ) : (
             <StyledWrapper>
@@ -79,22 +79,21 @@ const StyledButton = styled.button`
   outline: none;
   margin: 0;
   cursor: pointer;
-  border-radius: 50%;
+  padding: 0;
+  padding-right: 1.6rem;
+`;
+
+const StyledArrowLeft = styled(ArrowBackSvg)`
+  fill: ${({ theme: { color } }) => color.primary};
   width: 3.6rem;
   height: 3.6rem;
+  border-radius: 50%;
   padding: 0.6rem;
-  margin-right: 1.6rem;
   transition: background 0.3s ease;
 
   &:hover {
     background-color: ${({ theme: { color } }) => color.gray};
   }
-`;
-
-const StyledArrowLeft = styled(ArrowBackSvg)`
-  fill: ${({ theme: { color } }) => color.primary};
-  width: 100%;
-  height: 100%;
 `;
 
 const StyledInput = styled.input`
@@ -130,6 +129,7 @@ const StyledOverlay = styled.div`
 const StyledWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 `;
 
 const StyledText = styled.p`
