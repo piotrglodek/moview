@@ -15,7 +15,7 @@ export const Nav = ({ openSearchBar }) => {
   return (
     <StyledContainer>
       <Logo />
-      <Menu isOpen={isOpen} />
+      <Menu isOpen={isOpen} toggleMenu={toggleMenu} />
       <SearchIcon openSearchBar={openSearchBar} />
       <Hamburger toggleMenu={toggleMenu} isOpen={isOpen} />
     </StyledContainer>
