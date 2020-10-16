@@ -10,7 +10,11 @@ export const search = async (name, query) => {
     json.results
       .slice(0, 20)
       .filter(
-        item => item.media_type !== 'person' && item.genre_ids.length !== 0
+        item =>
+          item.media_type !== 'person' &&
+          item.genre_ids.length &&
+          item.poster_path &&
+          item.title
       )
   );
 
