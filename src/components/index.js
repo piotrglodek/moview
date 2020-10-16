@@ -7,6 +7,8 @@ export { withScroll } from './Card/withScroll';
 export { Section } from './Layout/Section';
 export { Container } from './Layout/Container';
 export { Footer } from './Layout/Footer';
+export { Main } from './Layout/Main';
+export { Pagination } from './Layout/Pagination';
 // Navigation
 export { Navigation } from './Navigation/Navigation';
 export { Menu } from './Navigation/Menu';

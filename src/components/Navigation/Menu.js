@@ -4,17 +4,17 @@ import styled from 'styled-components';
 // components
 import { NavLink } from './NavLink';
 
-const links = [
+export const links = [
   { label: 'Homepage', to: '/' },
-  { label: 'Movies', to: '/movies' },
-  { label: 'Series', to: '/series' },
+  { label: 'Movies', to: '/movies/page/1' },
+  { label: 'Series', to: '/tv/page/1' },
 ];
 
-export const Menu = ({ isOpen }) => {
+export const Menu = ({ isOpen, toggleMenu }) => {
   return (
     <StyledMenu isOpen={isOpen}>
       {links.map(({ label, to }) => (
-        <StyledMenuItem key={label}>
+        <StyledMenuItem onClick={toggleMenu} key={label}>
           <NavLink label={label} to={to} />
         </StyledMenuItem>
       ))}
@@ -55,4 +55,5 @@ const StyledMenuItem = styled.li`
 
 Menu.propTypes = {
   isOpen: PropTypes.bool,
+  toggleMenu: PropTypes.func.isRequired,
 };

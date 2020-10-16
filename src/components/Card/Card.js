@@ -20,15 +20,15 @@ export const Card = ({ data, mediaType }) => {
 
   return (
     <StyledCard>
-      <StyledLink to={`${mediaType}/${id}`}>
+      <StyledLink to={`/${mediaType}/${id}`}>
         <CardImage src={poster_url} alt={title} />
         <StyledOverlay>
           <StyledText>{vote_average}</StyledText>
           <StyledBadges>
-            {genres.isLoading || genres.isFetching
-              ? 'loading...'
+            {genres.isLoading
+              ? 'Loading categories...'
               : genres.isError
-              ? 'error'
+              ? "Oops, couldn't fetch categories"
               : genres.data.map(genre => (
                   <StyledBadge key={genre}>{genre}</StyledBadge>
                 ))}
