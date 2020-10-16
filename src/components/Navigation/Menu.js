@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { NavLink } from '../';
+import { NavLink } from './NavLink';
 
 const links = [
   { label: 'Homepage', to: '/' },

@@ -1,7 +1,7 @@
-import { base_url } from './static';
+import { base_url, KEY } from './';
 
 export const fetchGenres = async (name, genresArray) => {
-  let url = `${base_url}genre/${name}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+  let url = `${base_url}genre/${name}/list?api_key=${KEY}&language=en-US`;
   const response = await fetch(url);
   const json = await response.json();
   const genres = json.genres
