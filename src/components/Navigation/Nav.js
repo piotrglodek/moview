@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { Logo, Menu, SearchIcon, Hamburger } from '../';
+import { Logo } from './Logo';
+import { Menu } from './Menu';
+import { SearchIcon } from './SearchIcon';
+import { Hamburger } from './Hamburger';
 // hook
 import { useToggleMenu } from '../../hooks/useToggleMenu';
 

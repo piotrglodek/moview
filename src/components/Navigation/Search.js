@@ -4,10 +4,10 @@ import styled from 'styled-components';
 // icon
 import { ReactComponent as ArrowBackSvg } from '../../assets/arrow-back.svg';
 // components
-import { Card } from '../';
+import { Card, Container } from '../';
 // api
 import { useQuery } from 'react-query';
-import { searchAll } from '../../api';
+import { search } from '../../api';
 
 export const Search = ({ closeSearchBar }) => {
   //input
@@ -19,7 +19,7 @@ export const Search = ({ closeSearchBar }) => {
   // search movies
   const { isIdle, isLoading, isFetching, isError, data, refetch } = useQuery(
     ['search', query],
-    searchAll,
+    search,
     {
       enabled: false,
     }
@@ -45,34 +45,25 @@ export const Search = ({ closeSearchBar }) => {
         autoFocus
       />
       <StyledOverlay>
-        {isIdle ? (
-          <StyledText>Search for results</StyledText>
-        ) : isError ? (
-          <StyledText>Error</StyledText>
-        ) : isLoading || isFetching ? (
-          <StyledText>searching...</StyledText>
-        ) : (
-          <StyledRow>
-            {data.map(result => {
-              return (
-                <StyledSearchItem key={result.id}>
-                  <Card
-                    data={result}
-                    to={result.media_type}
-                    title={
-                      result.media_type === 'movie' ? result.title : result.name
-                    }
-                    year={
-                      result.media_type === 'movie'
-                        ? result.release_date
-                        : result.first_air_date
-                    }
-                  />
-                </StyledSearchItem>
-              );
-            })}
-          </StyledRow>
-        )}
+        <Container>
+          {isIdle ? (
+            <StyledText>Search for results</StyledText>
+          ) : isError ? (
+            <StyledText>Error</StyledText>
+          ) : isLoading || isFetching ? (
+            <StyledText>Searching...</StyledText>
+          ) : (
+            <StyledWrapper>
+              {data.map(result => (
+                <Card
+                  key={result.id}
+                  data={result}
+                  mediaType={result.media_type}
+                />
+              ))}
+            </StyledWrapper>
+          )}
+        </Container>
       </StyledOverlay>
     </StyledHeader>
   );
@@ -129,27 +120,22 @@ const StyledOverlay = styled.div`
   top: 6.8rem;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: ${({ theme: { color } }) => color.filter};
   width: 100%;
   z-index: 2;
   overflow-y: auto;
   overflow-x: hidden;
 `;
 
-const StyledRow = styled.div`
+const StyledWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
 `;
 
 const StyledText = styled.p`
   font-size: 1.6rem;
   color: ${({ theme: { color } }) => color.white};
   text-align: center;
-`;
-
-const StyledSearchItem = styled.div`
-  margin: 1rem;
 `;
 
 Search.propTypes = {

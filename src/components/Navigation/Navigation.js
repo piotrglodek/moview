@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import { Nav, Search, Container } from '../';
+import { Container } from '../';
+import { Nav } from './Nav';
+import { Search } from './Search';
 // hook
 import { useToggleSearchBar } from '../../hooks/useToggleSearchBar';
 
