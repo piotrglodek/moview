@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 // components
 import { Container, CardList } from '../components';
 
-export const Shows = ({ mediaType }) => {
+export const Show = ({ mediaType }) => {
   let { pageNumber } = useParams();
   pageNumber = parseInt(pageNumber);
   return (
@@ -21,6 +21,6 @@ export const Shows = ({ mediaType }) => {
   );
 };
 
-Shows.propTypes = {
+Show.propTypes = {
   mediaType: PropTypes.string.isRequired,
 };
