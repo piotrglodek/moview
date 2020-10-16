@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { Logo, Menu, SearchIcon, Hamburger } from '../';
+import { Logo } from './Logo';
+import { Menu } from './Menu';
+import { SearchIcon } from './SearchIcon';
+import { Hamburger } from './Hamburger';
 // hook
 import { useToggleMenu } from '../../hooks/useToggleMenu';
 
@@ -12,7 +15,7 @@ export const Nav = ({ openSearchBar }) => {
   return (
     <StyledContainer>
       <Logo />
-      <Menu isOpen={isOpen} />
+      <Menu isOpen={isOpen} toggleMenu={toggleMenu} />
       <SearchIcon openSearchBar={openSearchBar} />
       <Hamburger toggleMenu={toggleMenu} isOpen={isOpen} />
     </StyledContainer>
