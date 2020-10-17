@@ -4,10 +4,10 @@ import styled from 'styled-components';
 // icon
 import brokenImage from '../../assets/broken-image.svg';
 // hook
-import { useCardImageError } from '../../hooks/useCardImageError';
+import { useImageError } from '../../hooks/useImageError';
 
 export const CardImage = ({ src, alt }) => {
-  const [isError, handleImageError] = useCardImageError();
+  const [isError, handleImageError] = useImageError();
 
   return (
     <StyledImage

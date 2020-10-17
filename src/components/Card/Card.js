@@ -7,16 +7,16 @@ import { CardImage } from './CardImage';
 import { CardFooter } from './CardFooter';
 // api
 import { useQuery } from 'react-query';
-import { base_poster_url, fetchGenres } from '../../api';
+import { base_poster_url, fetchMediaGenres } from '../../api';
 
 export const Card = ({ data, mediaType }) => {
   const { id, poster_path, vote_average, genre_ids } = data;
-  let poster_url = `${base_poster_url}${poster_path}`;
+  let poster_url = `${base_poster_url}w154${poster_path}`;
   let title = mediaType === 'movie' ? data.title : data.name;
   let year = parseInt(
     mediaType === 'movie' ? data.release_date : data.first_air_date
   );
-  const genres = useQuery([mediaType, genre_ids], fetchGenres);
+  const genres = useQuery([mediaType, genre_ids], fetchMediaGenres);
 
   return (
     <StyledCard>
