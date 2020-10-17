@@ -16,6 +16,7 @@ export const Show = ({ mediaType }) => {
         mediaType={mediaType}
         title={mediaType}
         page={pageNumber}
+        discover='discover'
       />
     </Container>
   );
