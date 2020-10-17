@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// icon
-import brokenImage from '../../assets/broken-image.svg';
 // hook
 import { useImageError } from '../../hooks/useImageError';
+// icon
+import brokenImage from '../../assets/broken-image.svg';
 
-export const CardImage = ({ src, alt }) => {
+export const MediaImage = ({ src, alt }) => {
   const [isError, handleImageError] = useImageError();
-
   return (
     <StyledImage
       onError={handleImageError}
@@ -21,11 +20,11 @@ export const CardImage = ({ src, alt }) => {
 const StyledImage = styled.img`
   display: block;
   border-radius: 0.2rem;
-  width: 15.4rem;
-  height: 23.1rem;
+  width: 18.5rem;
+  height: 27.8rem;
 `;
 
-CardImage.propTypes = {
+MediaImage.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 };

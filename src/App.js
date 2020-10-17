@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 // components
 import { Navigation, Footer, Main } from './components';
 // pages
-import { Home, Show } from './pages';
+import { Home, Show, SingleMediaPage } from './pages';
 // temp React query dev tools
 import { ReactQueryDevtools } from 'react-query-devtools';
 
@@ -24,6 +24,16 @@ function App() {
             exact
             path='/tv/page/:pageNumber'
             component={() => <Show mediaType='tv' />}
+          />
+          <Route
+            exact
+            path='/tv/:id'
+            component={() => <SingleMediaPage mediaType='tv' />}
+          />
+          <Route
+            exact
+            path='/movie/:id'
+            component={() => <SingleMediaPage mediaType='movie' />}
           />
         </Switch>
       </Main>
