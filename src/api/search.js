@@ -8,14 +8,15 @@ export const search = async (name, query) => {
 
   const data = Promise.all(
     json.results
-      .slice(0, 20)
+      .slice(0, 8)
       .filter(
         item =>
           item.media_type !== 'person' &&
           item.genre_ids.length &&
           item.poster_path &&
-          item.title
+          item.vote_average !== 0
       )
+      .sort((a, b) => b.vote_average - a.vote_average)
   );
 
   return data;
