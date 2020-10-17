@@ -12,9 +12,9 @@ export const Home = () => {
       {apiSections.map(section => (
         <Section key={section.title} title={section.title}>
           <CardScrollList
-            title={section.title}
-            url={section.url}
             mediaType={section.mediaType}
+            page={1}
+            getBy={section.getBy}
           />
         </Section>
       ))}

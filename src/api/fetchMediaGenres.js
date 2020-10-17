@@ -1,6 +1,6 @@
 import { base_url, KEY } from './';
 
-export const fetchGenres = async (name, genresArray) => {
+export const fetchMediaGenres = async (name, genresArray) => {
   let url = `${base_url}genre/${name}/list?api_key=${KEY}&language=en-US`;
   const response = await fetch(url);
   const json = await response.json();

@@ -11,15 +11,18 @@ export const CardList = ({
   wrap,
   jusitfy,
   havePagination,
-  title,
-  url,
   mediaType,
   page,
+  getBy,
+  discover,
+  similar,
+  id,
 }) => {
   const { isLoading, isError, data, error } = useQuery(
-    [title, url, page],
+    [mediaType, page, getBy, discover, similar, id],
     fetchSection
   );
+
   return (
     <>
       {isLoading ? (
@@ -69,17 +72,18 @@ const StyledContainer = styled.article`
 `;
 
 CardList.defaultProps = {
-  url: '',
   wrap: false,
   jusitfy: 'flex-start',
   havePagination: false,
+  similar: false,
 };
 CardList.propTypes = {
   wrap: PropTypes.bool,
   havePagination: PropTypes.bool,
   jusitfy: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string,
   mediaType: PropTypes.string.isRequired,
   page: PropTypes.number,
+  getBy: PropTypes.string,
+  discover: PropTypes.string,
+  similar: PropTypes.bool,
 };

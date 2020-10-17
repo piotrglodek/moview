@@ -12,3 +12,6 @@ export { Pagination } from './Layout/Pagination';
 // Navigation
 export { Navigation } from './Navigation/Navigation';
 export { Menu } from './Navigation/Menu';
+// Media
+export { Media } from './Media/Media';
+export { MediaSkeleton } from './Media/MediaSkeleton';
