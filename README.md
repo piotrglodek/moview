@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://moview-app.netlify.app">
-    <img src="https://github.com/piotrglodek/meteo/blob/main/readme/logo.png" alt="Moview logo">
+    <img src="https://github.com/piotrglodek/moview/blob/main/readme/logo.png" alt="Moview logo">
   </a>
 </p>
 
