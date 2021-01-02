@@ -6,7 +6,7 @@ export const CardFooter = ({ title, year }) => {
   return (
     <StyledFooter>
       <StyledTitle>{title}</StyledTitle>
-      <StyledSubtitle>{year}</StyledSubtitle>
+      <StyledSubtitle>{year || null}</StyledSubtitle>
     </StyledFooter>
   );
 };
