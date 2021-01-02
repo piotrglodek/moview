@@ -59,6 +59,7 @@ export const Search = ({ closeSearchBar }) => {
                   key={result.id}
                   data={result}
                   mediaType={result.media_type}
+                  onClick={closeSearchBar}
                 />
               ))}
             </StyledWrapper>

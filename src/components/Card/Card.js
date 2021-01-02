@@ -9,7 +9,7 @@ import { CardFooter } from './CardFooter';
 import { useQuery } from 'react-query';
 import { base_poster_url, fetchMediaGenres } from '../../api';
 
-export const Card = ({ data, mediaType }) => {
+export const Card = ({ data, mediaType, ...rest }) => {
   const { id, poster_path, vote_average, genre_ids } = data;
   let poster_url = `${base_poster_url}w154${poster_path}`;
   let title = mediaType === 'movie' ? data.title : data.name;
@@ -19,7 +19,7 @@ export const Card = ({ data, mediaType }) => {
   const genres = useQuery([mediaType, genre_ids], fetchMediaGenres);
 
   return (
-    <StyledCard>
+    <StyledCard {...rest}>
       <StyledLink to={`/${mediaType}/${id}`}>
         <CardImage src={poster_url} alt={title} />
         <StyledOverlay>
